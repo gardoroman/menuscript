@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Placeholder Text</h1>
+  <h1 class="page-title">Welcome to MenuScript</h1>
+  <div class="stores">
+    <p>Click on the stores below or add a new store</p>
+    {% if stores %}
+    {% for store in stores%}
+    <h2> <a href="{{ url_for('store', store_name=store.store_name) }}">{{ store.store_name}}</h2>
+    {% endfor %}
+    {% endif %}
+  </div>
 {% endblock %}
