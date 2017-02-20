@@ -17,3 +17,12 @@ def store(store_name):
         flash('Store %s not found.' % store_name)
         return redirect(url_for('index'))
     return render_template('store.html', store=store)
+
+@app.route('/menu/<menu_id>')
+def menu(menu_id):
+    menu = Menu.query.get(int(menu_id))
+    store = Store.query.get(menu.store_id)
+    if menu is None:
+        flash('Menu %s not found.' % menu_id)
+        return redirect(url_for('index'))
+    return render_template('menu.html', menu=menu, store=store)

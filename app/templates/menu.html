@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="page-title">Menu Page</h1>
+  <div class="menu">
+    <h2>Details for {{ store.name}}'s {{ menu.category }} menu</h2>
+      {% if menu.items %}
+      {% for item in menu.items%}
+      <h2 class="detail-header">Details for {{ item.item_name}}</h2>
+        <div><p class="details">section: {{ item.section }}</p></div>
+        <div><p class="details">description: {{ item.description }}</p></div>
+      {% endfor %}
+      {% endif %}
+  </div>
+{% endblock %}

@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Welcome to MenuScript</h1>
+  <h1 class="page-title">Store Page</h1>
   <div class="stores">
-    <h2>Details for {{ store.name}}</h2>
-      <div><p>address: {{ store.address }}</p></div>
-      <div><p>phone: {{ store.phone }} </p></div>
-      <div><p>cuisine: {{ store.cuisine_type  }}</p></div>
-      <div><p>opening time: {{ store.opening_time  }}</p></div>
-      <div><p>closing_time: {{ store.closing_time  }}</p></div>
+    <h2 class="detail-header">Details for {{ store.name}}</h2>
+      <div><p class="details">address: {{ store.address }}</p></div>
+      <div><p class="details">phone: {{ store.phone }} </p></div>
+      <div><p class="details">cuisine: {{ store.cuisine_type  }}</p></div>
+      <div><p class="details">opening time: {{ store.opening_time  }}</p></div>
+      <div><p class="details">closing_time: {{ store.closing_time  }}</p></div>
+      {% if store.menus %}
+      {% for menu in store.menus%}
+      <h2> <a href="{{ url_for('menu', menu_id=menu.id) }}"> {{ menu.category }} menu</h2>
+      {% endfor %}
+      {% endif %}
   </div>
 {% endblock %}
