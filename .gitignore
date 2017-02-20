@@ -45,6 +45,14 @@ coverage.xml
 *,cover
 .hypothesis/
 
+*.pyc
+*.pyo
+app.db
+search.db
+flask
+*.mo
+tmp/
+
 # Translations
 *.mo
 *.pot
