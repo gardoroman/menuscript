@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="page-title">New Menu Item</h1>
+  <h2>Add a category for the menu</h2>
+  <div class="form">
+    <form class="new-menu-form" name="new_menu" method="post">
+      {{ form.hidden_tag() }}
+      <p> Type in category (Breakfast, Brunch, Dinner, etc)</p>
+      <p>Category: {{ form.category(size=80)}}
+      <p><input type="submit" value="Save Changes"</p>
+    </form>
+  </div>
+{% endblock %}

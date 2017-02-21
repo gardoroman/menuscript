@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="page-title">New Store</h1>
+  <h2>Add a new store below</h2>
+  <div class="form">
+    <form class="new-store-form" name="new_store" method="post">
+      {{ form.hidden_tag() }}
+      <p>Name: {{ form.store_name(size=64)}}
+      </p>
+      <p>Address: {{ form.address(size=200)}}
+      </p>
+      <p>Phone: {{ form.phone(size=15)}}
+      </p>
+      <p>Cuisine Type: {{ form.cuisine_type(size=50)}}
+      </p>
+      <p>Opening Time: {{ form.opening_time(size=15)}}
+      </p>
+      <p>Closing Time: {{ form.closing_time(size=15)}}
+      </p>
+      <p><input type="submit" value="Save Changes"</p>
+    </form>
+  </div>
+{% endblock %}
