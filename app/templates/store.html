@@ -4,14 +4,16 @@
   <h1 class="page-title">Store Page</h1>
   <div class="stores">
     <h2 class="detail-header">Details for {{ store.store_name}}</h2>
-      <div><p class="details">address: {{ store.address }}</p></div>
-      <div><p class="details">phone: {{ store.phone }} </p></div>
-      <div><p class="details">cuisine: {{ store.cuisine_type  }}</p></div>
-      <div><p class="details">opening time: {{ store.opening_time  }}</p></div>
-      <div><p class="details">closing_time: {{ store.closing_time  }}</p></div>
+      <div class="row">
+        <div class="col s12">address: {{ store.address }}</p></div>
+        <div class="col s6">phone: {{ store.phone }} </p></div>
+        <div class="col s6">cuisine: {{ store.cuisine_type  }}</p></div>
+        <div class="col s6">opening time: {{ store.opening_time  }} </div>
+        <div class="col s6">closing_time: {{ store.closing_time  }}</div>
+      </div>
       {% if store.menus %}
       {% for menu in store.menus%}
-      <h2> <a href="{{ url_for('menu', menu_id=menu.id) }}"> {{ menu.category }} menu</h2>
+      <h2> <a href="{{ url_for('menu', menu_id=menu.id) }}"> View {{ menu.category }} menu</h2>
       {% endfor %}
       {% endif %}
       <h2> <a href="{{ url_for('new_menu', store_id=store.id) }}">Add a new menu</h2>

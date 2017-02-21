@@ -3,8 +3,8 @@
 {% block content %}
   <h1 class="page-title">New Store</h1>
   <h2>Add a new store below</h2>
-  <div class="form">
-    <form class="new-store-form" name="new_store" method="post">
+  <div class="row">
+    <form class="col s12" name="new_store" method="post">
       {{ form.hidden_tag() }}
       <p>Name: {{ form.store_name(size=64)}}
       </p>
@@ -18,7 +18,9 @@
       </p>
       <p>Closing Time: {{ form.closing_time(size=15)}}
       </p>
-      <p><input type="submit" value="Save Changes"</p>
+      <button class="btn red waves-effect waves-green" type="submit" name="action">Send
+          <i class="material-icons right">send</i>
+      </button>
     </form>
   </div>
 {% endblock %}
