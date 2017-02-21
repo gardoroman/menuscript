@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="page-title">New Item</h1>
+  <h2>Add a new item to </h2>
+  <div class="form">
+    <form class="new-item-form" name="new_item" method="post">
+      {{ form.hidden_tag() }}
+      <p>Name: {{ form.item_name(size=64)}}
+      </p>
+      <p>Description: {{ form.description(size=80)}}
+      </p>
+      <p>Section (appetizer, entre, etc): {{ form.section(size=80)}}
+      </p>
+      <p><input type="submit" value="Save Changes"</p>
+    </form>
+  </div>
+{% endblock %}

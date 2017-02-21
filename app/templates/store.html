@@ -3,7 +3,7 @@
 {% block content %}
   <h1 class="page-title">Store Page</h1>
   <div class="stores">
-    <h2 class="detail-header">Details for {{ store.name}}</h2>
+    <h2 class="detail-header">Details for {{ store.store_name}}</h2>
       <div><p class="details">address: {{ store.address }}</p></div>
       <div><p class="details">phone: {{ store.phone }} </p></div>
       <div><p class="details">cuisine: {{ store.cuisine_type  }}</p></div>
@@ -14,5 +14,6 @@
       <h2> <a href="{{ url_for('menu', menu_id=menu.id) }}"> {{ menu.category }} menu</h2>
       {% endfor %}
       {% endif %}
+      <h2> <a href="{{ url_for('new_menu', store_id=store.id) }}">Add a new menu</h2>
   </div>
 {% endblock %}

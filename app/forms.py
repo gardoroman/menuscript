@@ -12,9 +12,13 @@ class StoreForm(Form):
     closing_time = StringField('closing_time', validators=[Length(min=0,max=15)])
 
 
-    # store_name = db.Column(db.String(64), index=True, unique=True)
-    # address = db.Column(db.String(200), index=True, unique=True)
-    # phone = db.Column(db.String(15))
-    # cuisine_type = db.Column(db.String(50))
-    # opening_time = db.Column(db.String(15))
-    # closing_time = db.Column(db.String(15))
+class MenuForm(Form):
+    category = StringField('cuisine_type', validators=[Length(min=0,max=80)])
+    # gave the RadioField the old college try :(
+    # category = RadioField('Label', choices=[('1','Breakfast'),
+    #                      ('2','Lunch'),('3','Dinner')])
+
+class ItemForm(Form):
+    item_name = StringField('item_name', validators=[DataRequired()])
+    description = StringField('description', validators=[DataRequired()])
+    section =  StringField('section', validators=[DataRequired()])
