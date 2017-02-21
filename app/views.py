@@ -64,6 +64,7 @@ def new_item(menu_id):
         item.item_name = request.form['item_name']
         item.description = request.form['description']
         item.section = request.form['section']
+        item.price = request.form['price']
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('menu', menu_id=menu_id))

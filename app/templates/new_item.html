@@ -6,12 +6,10 @@
   <div class="row">
     <form class="col s12" name="new_item" method="post">
       {{ form.hidden_tag() }}
-      <p>Name: {{ form.item_name(size=64)}}
-      </p>
-      <p>Description: {{ form.description(size=80)}}
-      </p>
-      <p>Section (appetizer, entre, etc): {{ form.section(size=80)}}
-      </p>
+      <p>Name: {{ form.item_name(size=64)}} </p>
+      <p>Description: {{ form.description(size=80)}} </p>
+      <p>Section (appetizer, entre, etc): {{ form.section(size=80)}} </p>
+      <p>Price: {{ form.price(size=15)}}
       <button class="btn red waves-effect waves-green" type="submit" name="action">Send
           <i class="material-icons right">send</i>
       </button>

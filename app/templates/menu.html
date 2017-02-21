@@ -9,8 +9,9 @@
 
       {% for item in menu.items%}
         <div class="col s12"><h5>Details for {{ item.item_name}}</h5></div>
-        <div class="col s3">section: {{ item.section }}</div>
-        <div class="col s9">description: {{ item.description }}</div>
+        <div class="col s2">section: {{ item.section }}</div>
+        <div class="col s7">description: {{ item.description }}</div>
+        <div class="col s2">price: ${{ item.price }}</div>
       {% endfor %}
      </div>
       {% endif %}
