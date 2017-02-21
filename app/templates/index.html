@@ -3,11 +3,14 @@
 {% block content %}
   <h1 class="page-title">Welcome to MenuScript</h1>
   <div class="stores">
-    <p>Click on the stores below or add a new store</p>
+    <h2>Click on the stores below or add a new store</h2>
     {% if stores %}
+    <div class="row">
+
     {% for store in stores%}
-    <h2> <a href="{{ url_for('store', store_name=store.store_name) }}">{{ store.store_name}}</h2>
+    <div class="col s3"> <a href="{{ url_for('store', store_name=store.store_name) }}">{{ store.store_name}}</div>
     {% endfor %}
+  </div>
     {% endif %}
   </div>
   <h2> <a href="{{ url_for('new_store') }}">Add a new store</h2>

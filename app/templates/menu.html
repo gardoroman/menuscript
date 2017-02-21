@@ -5,11 +5,14 @@
   <div class="menu">
     <h2>Details for {{ store.store_name}}'s {{ menu.category }} menu</h2>
       {% if menu.items %}
+      <div class="row">
+
       {% for item in menu.items%}
-      <h2 class="detail-header">Details for {{ item.item_name}}</h2>
-        <div><p class="details">section: {{ item.section }}</p></div>
-        <div><p class="details">description: {{ item.description }}</p></div>
+        <div class="col s12"><h5>Details for {{ item.item_name}}</h5></div>
+        <div class="col s3">section: {{ item.section }}</div>
+        <div class="col s9">description: {{ item.description }}</div>
       {% endfor %}
+     </div>
       {% endif %}
       <h3> <a href="{{ url_for('new_item', menu_id=menu.id) }}"> Add new item to the {{ menu.category }} menu</h3>
   </div>
