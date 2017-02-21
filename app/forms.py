@@ -22,3 +22,4 @@ class ItemForm(Form):
     item_name = StringField('item_name', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
     section =  StringField('section', validators=[DataRequired()])
+    price =  StringField('price', validators=[DataRequired()])

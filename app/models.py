@@ -24,4 +24,5 @@ class Item(db.Model):
     item_name = db.Column(db.String(64), index=True, unique=True)
     description = db.Column(db.String(80))
     section = db.Column(db.String(30))
+    price = db.Column(db.String(15))
     menu_id = db.Column(db.Integer, db.ForeignKey('menu.id'))
