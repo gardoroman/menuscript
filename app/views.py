@@ -1,8 +1,6 @@
 from flask import render_template, redirect, session, url_for, flash, request
 from app import app, db
 from .models import Store, Menu, Item
-from wtforms import StringField
-from wtforms.validators import DataRequired
 from .forms import StoreForm, MenuForm, ItemForm
 
 # view for all stores
