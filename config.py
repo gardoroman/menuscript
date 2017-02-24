@@ -1,9 +1,25 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
-SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-WTF_CSRF_ENABLED = True
-SECRET_KEY = 'A ship-shipping ship ships shipping-ships'
+#Django style config setup
+class Config(object):
+    DEBUG = False
+    TESTING = False
+    CRSF_ENABLED = True
+    SECRET_KEY = 'I should cook things that are healthy'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+class ProductionConfig(Config):
+    DEBUG = False
+
+class StagingConfig(Config):
+    DEVELOPMENT = True
+    DEBUG = True
+
+class DevelopmentConfig(Config):
+    DEVELOPMENT = True
+    DEBUG = True
+
+class TestingConfig(Config):
+    TESTING = True
