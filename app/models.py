@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy.dialects.postgresql import JSON
 
 class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
