@@ -13,7 +13,7 @@
       </div>
       {% if store.menus %}
       {% for menu in store.menus%}
-      <h2> <a href="{{ url_for('menu', menu_id=menu.id) }}"> View {{ menu.category }} menu</h2>
+      <h2> <a href="{{ url_for('menus', store_id=store.id, menu_id=menu.id) }}"> View {{ menu.category }} menu</h2>
       {% endfor %}
       {% endif %}
       <h2> <a href="{{ url_for('new_menu', store_id=store.id) }}">Add a new menu</h2>

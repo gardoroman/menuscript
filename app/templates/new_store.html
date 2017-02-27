@@ -4,7 +4,7 @@
   <h1 class="page-title">New Store</h1>
   <h2>Add a new store below</h2>
   <div class="row">
-    <form class="col s12" name="new_store" method="post">
+    <form class="col s12" action="{{ url_for('create_store') }}" method="post">
       {{ form.hidden_tag() }}
       <p>Name: {{ form.store_name(size=64)}}
       </p>
