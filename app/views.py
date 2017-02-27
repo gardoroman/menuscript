@@ -11,16 +11,16 @@ def index():
     return render_template('index.html',
                             stores=stores)
 
-@app.route('/store/<store_name>')
-def store(store_name):
+@app.route('/stores/<store_name>')
+def stores(store_name):
     store = Store.query.filter_by(store_name=store_name).first()
     if store is None:
         flash('Store %s not found.' % store_name)
         return redirect(url_for('index'))
     return render_template('store.html', store=store)
 
-@app.route('/menu/<menu_id>')
-def menu(menu_id):
+@app.route('/stores/<int:store_id>/menus/<int:menu_id>')
+def menus(store_id, menu_id):
     menu = Menu.query.get(int(menu_id))
     store = Store.query.get(menu.store_id)
     if menu is None:
@@ -29,8 +29,14 @@ def menu(menu_id):
     return render_template('menu.html', menu=menu, store=store)
 
 # route for updating Store
-@app.route('/new_store', methods=['GET', 'POST'])
+# @app.route('/stores/new', methods=['GET', 'POST'])
+@app.route('/stores/new')
 def new_store():
+    form = StoreForm()
+    return render_template('new_store.html', form=form)
+
+@app.route('/stores', methods=['POST'])
+def create_store():
     form = StoreForm()
     if form.validate_on_submit():
         # there has to be a better way to update
@@ -40,22 +46,33 @@ def new_store():
                 closing_time=request.form['closing_time'])
         db.session.add(new_store)
         db.session.commit()
-        return redirect(url_for('store', store_name=new_store.store_name))
+        return redirect(url_for('stores', store_name=new_store.store_name))
     return render_template('new_store.html', form=form)
 
-@app.route('/new_menu/<int:store_id>', methods=['GET', 'POST'])
+@app.route('/stores/<int:store_id>/menus/new')
 def new_menu(store_id):
     form = MenuForm()
+    return render_template('new_menu.html', form=form, store_id=store_id)
+
+@app.route('/stores/<int:store_id>/menus', methods=['POST'])
+def create_menu(store_id):
+    form = MenuForm()
     menu = Menu(store_id=store_id)
-    if form.validate_on_submit():
-        menu.category = request.form['category']
+    cat = request.form['category']
+    if cat.strip() != '' and form.validate_on_submit():
+        menu.category = cat
         db.session.add(menu)
         db.session.commit()
-        return redirect(url_for('menu', menu_id=menu.id))
-    return render_template('new_menu.html', form=form)
+        return redirect(url_for('menus', store_id=store_id, menu_id=menu.id))
+    return render_template('new_menu.html', form=form, store_id=store_id)
 
-@app.route('/new_item/<int:menu_id>', methods=['GET', 'POST'])
-def new_item(menu_id):
+@app.route('/stores/<int:store_id>/menus/<int:menu_id>/items/new')
+def new_item(store_id, menu_id):
+    form = ItemForm()
+    return render_template('new_item.html', form=form, store_id=store_id, menu_id=menu_id)
+
+@app.route('/stores/<int:store_id>/menus/<int:menu_id>/items', methods=['POST'])
+def create_item(store_id, menu_id):
     form = ItemForm()
     item = Item(menu_id=menu_id)
     if form.validate_on_submit():
@@ -65,5 +82,5 @@ def new_item(menu_id):
         item.price = request.form['price']
         db.session.add(item)
         db.session.commit()
-        return redirect(url_for('menu', menu_id=menu_id))
-    return render_template('new_item.html', form=form)
+        return redirect(url_for('menus', store_id=store_id, menu_id=menu_id))
+    return render_template('new_item.html', form=form, store_id=store_id, menu_id=menu_id)

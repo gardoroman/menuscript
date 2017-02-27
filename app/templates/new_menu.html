@@ -4,7 +4,7 @@
   <h1 class="page-title">New Menu Item</h1>
   <h2>Add a category for the menu</h2>
   <div class="row">
-    <form class="col s12" name="new_menu" method="post">
+    <form class="col s12" action="{{ url_for('create_menu', store_id=store_id) }}" method="post">
       {{ form.hidden_tag() }}
       <p> Type in category (Breakfast, Lunch, Dinner, etc)</p>
       <p>Category: {{ form.category(size=80)}}
